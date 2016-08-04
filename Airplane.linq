@@ -19,4 +19,5 @@ void TheAirplane()
 void SpewVerbalDiarreah(int companies)
 {
 	Console.WriteLine("I was successful {0} times at {1} different companies.", companies+1, companies);
+	Console.WriteLine("And I've done this many many times.");
 }
