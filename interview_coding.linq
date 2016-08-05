@@ -66,7 +66,7 @@ decimal ConvertToDecimal(string s)
 	{
 		if (s[i] == '.')
 		{
-				isLeft = false;
+			isLeft = false;
 		}
 		else
 		{
