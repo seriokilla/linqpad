@@ -5,17 +5,22 @@
 void Main()
 {
 	var tree = new BinaryTree<int>();
-	
-	var seq = new []{1, 9, 4, 10, 11, 2, 3};
+
+	var seq = new []{5,2,7};
 	foreach(var s in seq)
 	{
 		tree.Insert(s);
 	}
-	
-	tree.Traverse(BinaryTree<int>.TraverseOrder.InOrder);
-	tree.Traverse(BinaryTree<int>.TraverseOrder.PreOrder);
-	tree.Traverse(BinaryTree<int>.TraverseOrder.PostOrder);
-	tree.Traverse(BinaryTree<int>.TraverseOrder.ReverseOrder);
+	var rc = tree.ReturnPreOrder(tree.Head);
+	rc.Dump();
+//	
+//	tree.Traverse(BinaryTree<int>.TraverseOrder.InOrder);
+//	Console.WriteLine("-------------------");
+//	tree.Traverse(BinaryTree<int>.TraverseOrder.PreOrder);
+//	Console.WriteLine("-------------------");
+//	tree.Traverse(BinaryTree<int>.TraverseOrder.PostOrder);
+//	Console.WriteLine("-------------------");
+//	tree.Traverse(BinaryTree<int>.TraverseOrder.ReverseOrder);
 }
 
 // Define other methods and classes here
@@ -63,6 +68,21 @@ public class BinaryTree<T> where T : IComparable
 		}
 	}
 	
+	public List<T> ReturnPreOrder(Node<T> n)
+	{
+		var rc = new List<T>();
+		if (n == null) return rc;
+		
+		rc.Add(n.Item);
+		var l = ReturnPreOrder(n.Left);
+		rc = rc.Concat(l).ToList();
+		
+		var r = ReturnPreOrder(n.Right);
+		rc = rc.Concat(r).ToList();
+		
+		return rc;
+	}
+	
 	protected void TraverseInOrder(Node<T> n)
 	{
 		if (n == null)
@@ -80,7 +100,6 @@ public class BinaryTree<T> where T : IComparable
 		TraversePreOrder(n.Left);
 		TraversePreOrder(n.Right);
 	}
-	
 	protected void TraversePostOrder(Node<T> n)
 	{
 		if (n == null) return;
@@ -89,7 +108,6 @@ public class BinaryTree<T> where T : IComparable
 		TraversePostOrder(n.Right);
 		Console.WriteLine(n.Item);
 	}
-	
 	protected void TraverseReverseOrder(Node<T> n)
 	{
 		if (n == null) return;
@@ -98,7 +116,6 @@ public class BinaryTree<T> where T : IComparable
 		Console.WriteLine(n.Item);
 		TraverseReverseOrder(n.Left);
 	}
-
 	protected void Insert(ref Node<T> node, T item)
 	{
 		if (node == null)
@@ -107,6 +124,9 @@ public class BinaryTree<T> where T : IComparable
 		}
 		else
 		{
+			var comp = item.CompareTo(node.Item);
+			if (comp == 0) return;
+			
 			if (item.CompareTo(node.Item) < 0)
 				Insert(ref node.Left, item);
 			else
@@ -114,4 +134,3 @@ public class BinaryTree<T> where T : IComparable
 		}
 	}
 }
-
