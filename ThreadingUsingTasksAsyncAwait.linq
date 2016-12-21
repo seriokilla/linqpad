@@ -12,13 +12,12 @@ internal class Program
 
 		private static void Main()
 		{
-			for (int i = 0; i < 6; i++)
+			for (int i = 0; i < 25; i++)
 			{
 				ThreadFunction();
 			}
 
 			Console.WriteLine("<End>");
-			Task.WaitAll();
 		}
 
 		private static async void ThreadFunction()
@@ -26,7 +25,7 @@ internal class Program
 			int sleepSecs = 0;
 			lock(rand)
 			{
-				sleepSecs = rand.Next(5);
+				sleepSecs = rand.Next(5, 10);
 			}
 			
 			Console.WriteLine("{0:000} 1 {1} sleep {2}", System.Threading.Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("H:mm:ss.fff"), sleepSecs);
