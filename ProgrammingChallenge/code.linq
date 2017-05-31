@@ -2,7 +2,7 @@
 
 void Main()
 {
-	var path = @"C:\Projects\linqpad\ProgrammingChallenge\Files";
+	var path = @"C:\jlai\Github\linqpad\ProgrammingChallenge\Files";
 	var searchPattern = "pattern";
 	
 	var files = Directory.GetFiles(path);
