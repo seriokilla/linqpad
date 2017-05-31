@@ -17,6 +17,7 @@ internal class Program
 				ThreadFunction();
 			}
 
+			Task.WaitAll();
 			Console.WriteLine("<End>");
 		}
 
