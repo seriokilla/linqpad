@@ -12,23 +12,15 @@ internal class Program
 
 		private static void Main()
 		{
-<<<<<<< HEAD
 			for (int i = 0; i < 25; i++)
-=======
-			for (int i = 0; i < 20; i++)
->>>>>>> c249adade0d953b3cf6c95ad8bbab11089179051
 			{
-				ThreadFunction(i);
+				ThreadFunction();
 			}
 
 			Console.WriteLine("<End>");
-<<<<<<< HEAD
-=======
-			//Task.WaitAll();
->>>>>>> c249adade0d953b3cf6c95ad8bbab11089179051
 		}
 
-		private static async void ThreadFunction(int i)
+		private static async void ThreadFunction()
 		{
 			int sleepSecs = 0;
 			lock(rand)
@@ -36,11 +28,11 @@ internal class Program
 				sleepSecs = rand.Next(5, 10);
 			}
 			
-			Console.WriteLine("{3:000} - {0:000} 1 {1} sleep {2}", System.Threading.Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("H:mm:ss.fff"), sleepSecs, i);
+			Console.WriteLine("{0:000} 1 {1} sleep {2}", System.Threading.Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("H:mm:ss.fff"), sleepSecs);
 			
 			await LongRunningProcess(sleepSecs);
 			
-			Console.WriteLine("{3:000} - {0:000} 0 {1} sleep {2}", System.Threading.Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("H:mm:ss fff"), sleepSecs, i);
+			Console.WriteLine("{0:000} 0 {1} sleep {2}", System.Threading.Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("H:mm:ss fff"), sleepSecs);
 		}
 
 		private static Task LongRunningProcess(int secs)
