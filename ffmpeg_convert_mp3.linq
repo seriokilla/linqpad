@@ -4,9 +4,11 @@
   <Reference>&lt;RuntimeDirectory&gt;\System.Threading.Tasks.dll</Reference>
 </Query>
 
-static string ffmpegexec = @"C:\ffmpeg-20140501-git-feaa31d-win32-static\bin\ffmpeg.exe";
+//static string ffmpegexec = @"C:\ffmpeg-20140501-git-feaa31d-win32-static\bin\ffmpeg.exe";
+static string ffmpegexec = @"C:\Program Files (x86)\i-Funbox DevTeam\ffmpeg.exe";
 static string ffmpegcmd = "-i \"{0}\" -acodec libmp3lame -ac 2 -ab 160000 \"{1}\"";
-static string inputdir = @"C:\jlai\aac\";
+//static string inputdir = @"C:\jlai\aac\";
+static string inputdir = @"C:\Users\laijj\Music\Pandora";
 static string outputdir = @"C:\jlai\_mp3\";
 
 void Main()
@@ -25,11 +27,18 @@ void Main()
 
 void ConvertFilesThreaded(string root)
 {
-	var dirs = Directory.EnumerateDirectories(root);
 	var bag = new System.Collections.Concurrent.ConcurrentBag<string>();
 	
+	var dirs = Directory.EnumerateDirectories(root);
+	var dirlist = new List<string>(dirs);
+	if (dirlist.Count() == 0)
+	{
+		dirlist.Add(root);
+	}
+
+	
 	// fill bag
-	foreach(var dir in dirs)
+	foreach(var dir in dirlist)
 	{
 		var outdir = dir.Replace(inputdir, outputdir);
 		if (!Directory.Exists(outdir))
