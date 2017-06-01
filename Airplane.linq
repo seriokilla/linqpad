@@ -10,10 +10,7 @@ void Main()
 // Define other methods and classes here
 void TheAirplane()
 {
-	int companies = 1;
-
-	for(int i=0; i<10; i++)
-		SpewVerbalDiarreah(companies++);
+	Enumerable.Range(0, 10).ToList().ForEach((i) => {SpewVerbalDiarreah(i+1);});
 }
 
 void SpewVerbalDiarreah(int companies)
