@@ -5,17 +5,19 @@
 
 void Main()
 {
-	var listNeedsBatching = new []
-	{
-		1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
-	};
+//	var listNeedsBatching = new []
+//	{
+//		1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+//	};
 
-	int batchsize = 2;
+	var listNeedsBatching = "abcdefghijklmnopq".ToCharArray();
+
+	int batchsize = 3;
 	int num = 1;
 	
-	foreach(var batch in Batch<int>(listNeedsBatching, batchsize))
+	foreach(var batch in Batch(listNeedsBatching, batchsize))
 	{
-		PrintStuff<int>(num++, batch);
+		PrintStuff(num++, batch);
 	}
 }
 
