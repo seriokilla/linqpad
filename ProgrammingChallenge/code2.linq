@@ -4,17 +4,13 @@
 
 void Main()
 {
-	var intarray = new[]{81, 861391, 861392, 861393, 861394};
-	DoWork(intarray);
-	
-//	for(var i=0; i<1000000; i++)
-//	{
-//		if (IsPrime(i))
-//			Console.WriteLine(i);
-//	}
+	// given a list of numbers:
+	// count total even, total odd, total perfect squares 
+	// and output all primes in descending order
+	DoWork(Enumerable.Range(0, 100));
 }
 
-void DoWork(int[] numbers)
+void DoWork(IEnumerable<int> numbers)
 {
 	int totalEven = 0;
 	int totalOdd = 0;
@@ -51,12 +47,11 @@ bool IsPerfectSquare(int number)
 	double result = Math.Sqrt(number);
 	return result%1 == 0;
 }
+
 bool IsPrime(int number)
 {
     if (number < 2) return false;
-    if (number == 2) return true;
-
-    var boundary = (int)Math.Floor(Math.Sqrt(number));
+    var boundary = (int)Math.Sqrt(number);
 
     for (int i = 2; i <= boundary; ++i)
     {
