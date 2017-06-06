@@ -6,7 +6,7 @@
 void Main()
 {
 	var coins = new List<int>();
-	change(coins, 0, 0, 2);
+	change(coins, 0, 0, 16);
 }
 public static int[] amounts = new[]{2,3,6,7,8};
 // Define other methods and classes here
